@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
+
 bool isInteger(const string& str) {
     for (char c : str) {
         if (!isdigit(c) && c != '-') {
@@ -29,15 +30,11 @@ int main() {
     string line;
     while (getline(inputFile, line)) {
         if (line.empty()) {
-            cout << "Empty line found." << endl;
-        } else if (isInteger(line) || (line.front() == '-' && isInteger(line.substr(1)))) {
-            check(line);
-        } else {
-            cout << line << " is not a valid number." << endl;
+            continue;
         }
+        check(line);
     }
 
     inputFile.close();
-
     return 0;
 }
